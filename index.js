@@ -114,4 +114,11 @@ function fetchQR(id) {
     request.send(qrOptions)
 }
 
-// TODO: Add event listeners to all elements with editable class and use fetchQR() as the function to be executed
+function imgBase64(file) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader()
+        reader.readAsDataURL(file)
+        reader.addEventListener("loadend", () => { resolve(reader.result) })
+        reader.addEventListener("error", () => { reject(reader.error) })
+    })
+}
