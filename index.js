@@ -92,10 +92,13 @@ let qrOptions = {
     }
 }
 
+// TODO: check how to limit file upload size
+
 function qrOptionsFactory(id) {
     return new Promise((resolve, reject) => {
         let element = document.getElementById(id)
         if (Object.keys(qrOptions.options).includes(element.id)) {
+            // TODO: check how to handle radios here
             if (element.id === "image") {
                 let file = document.getElementById(id).files[0]
                 imgBase64(file)
