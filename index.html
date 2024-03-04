@@ -21,23 +21,23 @@
                             <div class="accordion-body row g-3">
                                 <div class="col-lg-3">URL:</div>
                                 <div class="col-lg-9">
-                                    <input class="editable" style="width: 100%;" type="text" placeholder="Your link goes here...">
+                                    <input class="editable" style="width: 100%;" type="text" placeholder="Your link goes here..." id ="data" onchange="fetchQR('data')">
                                 </div>
                                 <div class="col-lg-3">Image file:</div>
                                 <div class="col-lg-9">
-                                    <input class="editable" class="btn" style="width: 100%;" type="file" id="file-btn">
+                                    <input class="editable" class="btn" style="width: 100%;" type="file" id="image" onchange="fetchQR(this.id)">
                                 </div>
                                 <div class="col-lg-3">Height:</div>
                                 <div class="col-lg-9">
-                                    <input class="editable" style="width: 100%;" type="text" value="300">
+                                    <input class="editable" style="width: 100%;" type="text" value="300" id="height" onchange="fetchQR(this.id)">
                                 </div>
                                 <div class="col-lg-3">Width:</div>
                                 <div class="col-lg-9">
-                                    <input class="editable" style="width: 100%;" type="text" value="300">
+                                    <input class="editable" style="width: 100%;" type="text" value="300" id="width" onchange="fetchQR(this.id)">
                                 </div>
                                 <div class="col-lg-3">Margin:</div>
                                 <div class="col-lg-9">
-                                    <input class="editable" style="width: 100%;" type="text" value="0">
+                                    <input class="editable" style="width: 100%;" type="text" value="0" id="margin" onchange="fetchQR(this.id)">
                                 </div>
                             </div>
                         </div>
@@ -54,7 +54,7 @@
                                 <div class="col-lg-9">
                                     <div class="d-flex flex-column justify-content-center dropdown">
                                         <div class="dropdown">
-                                            <select name="dots-style" id="dots-style" class="btn btn-secondary dropdown-toggle editable">
+                                            <select name="dots-style" class="btn btn-secondary dropdown-toggle editable"  id="dotsOptionsHelper" onchange="fetchQR(this.id)">
                                                 <option>Select dots style</option>
                                                 <option value="square">Square</option>
                                                 <option value="dots">Dots</option>
@@ -97,7 +97,7 @@
                                 <div class="col-lg-9">
                                     <div class="d-flex flex-column justify-content-center dropdown">
                                         <div class="dropdown">
-                                            <select name="corner-square-style" id="corner-square-style" class="btn btn-secondary dropdown-toggle editable">
+                                            <select name="corner-square-style" class="btn btn-secondary dropdown-toggle editable" id="cornersSquareOptions" onchange="fetchQR(this.id)">
                                                 <option>Select dots style</option>
                                                 <option value="square">Square</option>
                                                 <option value="dots">Dots</option>
