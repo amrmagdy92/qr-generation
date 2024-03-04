@@ -92,8 +92,6 @@ let qrOptions = {
     }
 }
 
-// TODO: check how to limit file upload size
-
 function validateFileSize(file) {
     if (file.size > 102400) {
         return false
