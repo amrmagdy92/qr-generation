@@ -95,7 +95,7 @@ let qrOptions = {
 function qrOptionsFactory(id) {
     let element = document.getElementById(id)
     if (Object.keys(qrOptions.options).includes(element.id)) {
-        if (element.id == "image") {
+        if (element.id === "image") {
             let file = document.getElementById(id).files[0]
             imgBase64(file)
                 .then( result => {
