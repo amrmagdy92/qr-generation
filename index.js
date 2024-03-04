@@ -112,7 +112,7 @@ function qrOptionsFactory(id) {
 }
 
 function fetchQR(id) {
-    let qrOptions = qrOptionsFactory(id)
+    let generatedQROptions = qrOptionsFactory(id)
     const request = new XMLHttpRequest()
     request.open('POST', "http://127.0.0.1:5000/api/v1/qr")
     request.setRequestHeader('Content-Type', 'application/json')
@@ -124,7 +124,7 @@ function fetchQR(id) {
             // TODO: error handling
         }
     })
-    request.send(qrOptions)
+    request.send(generatedQROptions)
 }
 
 function imgBase64(file) {
