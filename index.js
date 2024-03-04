@@ -93,22 +93,25 @@ let qrOptions = {
 }
 
 function qrOptionsFactory(id) {
-    let element = document.getElementById(id)
-    if (Object.keys(qrOptions.options).includes(element.id)) {
-        if (element.id === "image") {
-            let file = document.getElementById(id).files[0]
-            imgBase64(file)
-                .then( result => {
-                    qrOptions["options"]["image"] = result
-                })
-                .catch( error => {
-                    console.log(error)
-                })
-        } else if (element.tagName === "select") {
-            qrOptions[id] = element.value
+    return new Promise((resolve, reject) => {
+        let element = document.getElementById(id)
+        if (Object.keys(qrOptions.options).includes(element.id)) {
+            if (element.id === "image") {
+                let file = document.getElementById(id).files[0]
+                imgBase64(file)
+                    .then( result => {
+                        qrOptions["options"]["image"] = result
+                        resolve(JSON.stringify(qrOptions))
+                    })
+                    .catch( error => {
+                        reject(error)
+                    })
+            } else if (element.tagName === "select") {
+                qrOptions[id] = element.value
+                resolve(JSON.stringify(qrOptions))
+            }
         }
-    }
-    return JSON.stringify(qrOptions)
+    })
 }
 
 function fetchQR(id) {
