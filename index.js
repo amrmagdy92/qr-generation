@@ -98,8 +98,8 @@ function qrOptionsFactory(id) {
     return JSON.stringify(qrOptions)
 }
 
-function fetchQR() {
-    let qrOptions = qrOptionsFactory() // TODO: check how to pass the id to this function from fetchQR
+function fetchQR(id) {
+    let qrOptions = qrOptionsFactory(id)
     const request = new XMLHttpRequest()
     request.open('POST', "http://127.0.0.1:5000/api/v1/qr")
     request.setRequestHeader('Content-Type', 'application/json')
