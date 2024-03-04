@@ -100,6 +100,21 @@ function validateFileSize(file) {
     }
 }
 
+// TODO: Implement the below factories
+function mainOptionsFactory() {}
+
+function dotsOptionsFactory() {}
+
+function cornerSquareOptionsFactory() {}
+
+function cornerDotsOptionsFactory() {}
+
+function backgroundOptionsFactory() {}
+
+function imageOptionsFactory() {}
+
+function advQROptionsFactory() {}
+
 function qrOptionsFactory(id) {
     return new Promise((resolve, reject) => {
         let element = document.getElementById(id)
