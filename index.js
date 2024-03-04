@@ -115,19 +115,21 @@ function qrOptionsFactory(id) {
 }
 
 function fetchQR(id) {
-    let generatedQROptions = qrOptionsFactory(id)
-    const request = new XMLHttpRequest()
-    request.open('POST', "http://127.0.0.1:5000/api/v1/qr")
-    request.setRequestHeader('Content-Type', 'application/json')
-    request.addEventListener('load', function(event) {
-        if (request.status === 200 && request.readyState === 4) {
-            let base64Response = JSON.parse(request.response).msg
-            $("#image").attr("src", `data:image/png;base64, ${base64Response}`)
-        } else {
-            // TODO: error handling
-        }
-    })
-    request.send(generatedQROptions)
+    qrOptionsFactory(id)
+        .then( result => {
+            const request = new XMLHttpRequest()
+            request.open('POST', "http://127.0.0.1:5000/api/v1/qr")
+            request.setRequestHeader('Content-Type', 'application/json')
+            request.addEventListener('load', function(event) {
+                if (request.status === 200 && request.readyState === 4) {
+                    let base64Response = JSON.parse(request.response).msg
+                    $("#generated-qr").attr("src", `data:image/png;base64, ${base64Response}`)
+                } else {
+                    // TODO: error handling
+                }
+            })
+            request.send(result)
+        })
 }
 
 function imgBase64(file) {
