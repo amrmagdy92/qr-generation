@@ -94,6 +94,14 @@ let qrOptions = {
 
 // TODO: check how to limit file upload size
 
+function validateFileSize(file) {
+    if (file.size > 102400) {
+        return false
+    } else {
+        return true
+    }
+}
+
 function qrOptionsFactory(id) {
     return new Promise((resolve, reject) => {
         let element = document.getElementById(id)
@@ -101,7 +109,8 @@ function qrOptionsFactory(id) {
             // TODO: check how to handle radios here
             if (element.id === "image") {
                 let file = document.getElementById(id).files[0]
-                imgBase64(file)
+                if (validateFileSize(file)) {
+                    imgBase64(file)
                     .then( result => {
                         qrOptions["options"]["image"] = result
                         resolve(JSON.stringify(qrOptions))
@@ -109,6 +118,10 @@ function qrOptionsFactory(id) {
                     .catch( error => {
                         reject(error)
                     })
+                } else {
+                    alert("Image file should be less than or equal to 100 KB")
+                    element.value = null
+                }
             } else if (element.tagName === "select") {
                 qrOptions[id] = element.value
                 resolve(JSON.stringify(qrOptions))
