@@ -93,9 +93,8 @@ let qrOptions = {
 }
 
 function qrOptionsFactory(id) {
-    // TODO: getElementById and based on the tag type, extract the value
-    // TODO: update qrOptions based on the id and value
-    // TODO: After changing the value return the updated options
+    let element = document.getElementById(id)
+    if (Object.keys(qrOptions).includes(element.id)) qrOptions[id] = element.value
     return JSON.stringify(qrOptions)
 }
 
