@@ -94,7 +94,20 @@ let qrOptions = {
 
 function qrOptionsFactory(id) {
     let element = document.getElementById(id)
-    if (Object.keys(qrOptions).includes(element.id)) qrOptions[id] = element.value
+    if (Object.keys(qrOptions.options).includes(element.id)) {
+        if (element.id == "image") {
+            let file = document.getElementById(id).files[0]
+            imgBase64(file)
+                .then( result => {
+                    qrOptions["image"] = result
+                })
+                .catch( error => {
+                    console.log(error)
+                })
+        } else if (element.tagName === "select") {
+            qrOptions[id] = element.value
+        }
+    }
     return JSON.stringify(qrOptions)
 }
 
