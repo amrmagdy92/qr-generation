@@ -99,7 +99,7 @@ function qrOptionsFactory(id) {
             let file = document.getElementById(id).files[0]
             imgBase64(file)
                 .then( result => {
-                    qrOptions["image"] = result
+                    qrOptions["options"]["image"] = result
                 })
                 .catch( error => {
                     console.log(error)
