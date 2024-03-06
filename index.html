@@ -22,23 +22,23 @@
                             <div class="accordion-body row g-3">
                                 <div class="col-lg-3">URL:</div>
                                 <div class="col-lg-9">
-                                    <input class="editable" style="width: 100%;" type="text" placeholder="Your link goes here..." id ="data" onchange="fetchQR('data')">
+                                    <input style="width: 100%;" type="text" placeholder="Your link goes here..." id ="data" onchange="fetchQR('data')">
                                 </div>
                                 <div class="col-lg-3">Image file:</div>
                                 <div class="col-lg-9">
-                                    <input class="editable" class="btn" style="width: 100%;" type="file" id="image" onchange="fetchQR(this.id)">
+                                    <input class="btn" style="width: 100%;" type="file" id="image" onchange="fetchQR(this.id)">
                                 </div>
                                 <div class="col-lg-3">Height:</div>
                                 <div class="col-lg-9">
-                                    <input class="editable" style="width: 100%;" type="text" value="300" id="height" onchange="fetchQR(this.id)">
+                                    <input style="width: 100%;" type="text" value="300" id="height" onchange="fetchQR(this.id)">
                                 </div>
                                 <div class="col-lg-3">Width:</div>
                                 <div class="col-lg-9">
-                                    <input class="editable" style="width: 100%;" type="text" value="300" id="width" onchange="fetchQR(this.id)">
+                                    <input style="width: 100%;" type="text" value="300" id="width" onchange="fetchQR(this.id)">
                                 </div>
                                 <div class="col-lg-3">Margin:</div>
                                 <div class="col-lg-9">
-                                    <input class="editable" style="width: 100%;" type="text" value="0" id="margin" onchange="fetchQR(this.id)">
+                                    <input style="width: 100%;" type="text" value="0" id="margin" onchange="fetchQR(this.id)">
                                 </div>
                             </div>
                         </div>
@@ -55,7 +55,7 @@
                                 <div class="col-lg-9">
                                     <div class="d-flex flex-column justify-content-center dropdown">
                                         <div class="dropdown">
-                                            <select name="dots-style" class="btn btn-secondary dropdown-toggle editable"  id="dotsOptionsHelper" onchange="fetchQR(this.id)">
+                                            <select name="dots-style" class="btn btn-secondary dropdown-toggle"  id="dots-style" onchange="fetchQR(this.id)">
                                                 <option>Select dots style</option>
                                                 <option value="square">Square</option>
                                                 <option value="dots">Dots</option>
@@ -67,21 +67,21 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-3">Color Type:</div>
+                                <!-- <div class="col-lg-3">Color Type:</div>
                                 <div class="col-lg-9">
-                                    <!--TODO: check how to handle these radios when structuring the qrOptions object-->
+                                    TODO: check how to handle these radios when structuring the qrOptions object
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input editable" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
                                         <label class="form-check-label" for="inlineRadio1">Single color</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input editable" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
                                         <label class="form-check-label" for="inlineRadio2">Color gradient</label>
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="col-lg-3">Dots Color:</div>
                                 <div class="col-lg-9">
-                                    <input class="editable" type="color" value="#0077B7">
+                                    <input type="color" id="dots-color" value="#0077B7">
                                 </div>
                             </div>
                         </div>
@@ -98,7 +98,7 @@
                                 <div class="col-lg-9">
                                     <div class="d-flex flex-column justify-content-center dropdown">
                                         <div class="dropdown">
-                                            <select name="corner-square-style" class="btn btn-secondary dropdown-toggle editable" id="cornersSquareOptions" onchange="fetchQR(this.id)">
+                                            <select name="corner-square-style" class="btn btn-secondary dropdown-toggle" id="corner-square-style" onchange="fetchQR(this.id)">
                                                 <option>Select dots style</option>
                                                 <option value="square">Square</option>
                                                 <option value="dots">Dots</option>
@@ -107,28 +107,28 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-3">Color Type:</div>
+                                <!-- <div class="col-lg-3">Color Type:</div>
                                 <div class="col-lg-9">
-                                    <!--TODO: check how to handle these radios when structuring the qrOptions object-->
+                                    TODO: check how to handle these radios when structuring the qrOptions object
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input editable" type="radio" name="inlineRadioOptions" id="corner-square-single" value="option1">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="corner-square-single" value="option1">
                                         <label class="form-check-label" for="inlineRadio1">Single color</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input editable" type="radio" name="inlineRadioOptions" id="corner-square-gradient" value="option2">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="corner-square-gradient" value="option2">
                                         <label class="form-check-label" for="inlineRadio2">Color gradient</label>
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="col-lg-3">Corner Square Color:</div>
                                 <div class="col-lg-9">
-                                    <input class="editable" type="color" value="#0077B7">
+                                    <input type="color" value="#0077B7">
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="accordion-item">
                         <h2 class="accordion-header">
-                            <button class="accordion-button editable" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
                                 Corners dot options
                             </button>
                         </h2>
@@ -138,7 +138,7 @@
                                 <div class="col-lg-9">
                                     <div class="d-flex flex-column justify-content-center dropdown">
                                         <div class="dropdown">
-                                            <select name="corner-dots-style" id="corner-dots-style" class="btn btn-secondary dropdown-toggle editable">
+                                            <select name="corner-dots-style" id="corner-dots-style" class="btn btn-secondary dropdown-toggle">
                                                 <option>Select dots style</option>
                                                 <option value="none">None</option>
                                                 <option value="square">Square</option>
@@ -147,26 +147,26 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-3">Color Type:</div>
+                                <!-- <div class="col-lg-3">Color Type:</div>
                                 <div class="col-lg-9">
-                                    <!--TODO: check how to handle these radios when structuring the qrOptions object-->
+                                    TODO: check how to handle these radios when structuring the qrOptions object
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input editable" type="radio" name="inlineRadioOptions" id="corner-square-single" value="option1">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="corner-square-single" value="option1">
                                         <label class="form-check-label" for="inlineRadio1">Single color</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input editable" type="radio" name="inlineRadioOptions" id="corner-square-gradient" value="option2">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="corner-square-gradient" value="option2">
                                         <label class="form-check-label" for="inlineRadio2">Color gradient</label>
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="col-lg-3">Corner Dots Color:</div>
                                 <div class="col-lg-9">
-                                    <input class="editable" type="color" value="#0077B7">
+                                    <input type="color" value="#0077B7">
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="accordion-item">
+                    <!-- <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseThree">
                                 Background options
@@ -176,23 +176,23 @@
                             <div class="accordion-body row g-3">
                                 <div class="col-lg-3">Color type:</div>
                                 <div class="col-lg-9">
-                                    <!--TODO: check how to handle these radios when structuring the qrOptions object-->
+                                    TODO: check how to handle these radios when structuring the qrOptions object
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input editable" type="radio" name="inlineRadioOptions" id="corner-square-single" value="option1">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="corner-square-single" value="option1">
                                         <label class="form-check-label" for="inlineRadio1">Single color</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input editable" type="radio" name="inlineRadioOptions" id="corner-square-gradient" value="option2">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="corner-square-gradient" value="option2">
                                         <label class="form-check-label" for="inlineRadio2">Color gradient</label>
                                     </div>
                                 </div>
-                                <div class="col-lg-3">Corner Dots Color:</div>
+                                <div class="col-lg-3">Background color:</div>
                                 <div class="col-lg-9">
-                                    <input class="editable" type="color" value="#0077B7">
+                                    <input type="color" value="#0077B7">
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseThree">
@@ -204,15 +204,15 @@
                                 <div class="col-lg-3">Hide background dots:</div>
                                 <!--TODO: check how to handle this checkbox when structuring the qrOptions object-->
                                 <div class="col-lg-9 form-check">
-                                    <input class="form-check-input editable" type="checkbox" value="" id="hide-background" checked>
+                                    <input class="form-check-input" type="checkbox" value="" id="hide-background" checked>
                                 </div>
                                 <div class="col-lg-3">Image size:</div>
                                 <div class="col-lg-9">
-                                    <input class="editable" style="width: 100%;" type="text" value="300">
+                                    <input style="width: 100%;" type="text" id="image-size" value="300">
                                 </div>
                                 <div class="col-lg-3">Margin:</div>
                                 <div class="col-lg-9">
-                                    <input class="editable" style="width: 100%;" type="text" value="300">
+                                    <input style="width: 100%;" type="text" id="image-margin" value="300">
                                 </div>
                             </div>
                         </div>
@@ -227,13 +227,13 @@
                             <div class="accordion-body row g-3">
                                 <div class="col-lg-3">Type number:</div>
                                 <div class="col-lg-9">
-                                    <input class="editable" style="width: 100%;" type="text" value="0">
+                                    <input style="width: 100%;" type="text" id="qr-type" value="0">
                                 </div>
                                 <div class="col-lg-3">Mode:</div>
                                 <div class="col-lg-9">
                                     <div class="d-flex flex-column justify-content-center dropdown">
                                         <div class="dropdown">
-                                            <select name="mode" id="mode" class="btn btn-secondary dropdown-toggle editable">
+                                            <select name="mode" id="mode" class="btn btn-secondary dropdown-toggle">
                                                 <option>Select mode</option>
                                                 <option value="Numeric">Numeric</option>
                                                 <option value="Alphanumeric">Alphanumeric</option>
@@ -247,7 +247,7 @@
                                 <div class="col-lg-9">
                                     <div class="d-flex flex-column justify-content-center dropdown">
                                         <div class="dropdown">
-                                            <select name="correction-level" id="correction-level" class="btn btn-secondary dropdown-toggle editable">
+                                            <select name="correction-level" id="correction-level" class="btn btn-secondary dropdown-toggle">
                                                 <option>Select correction level</option>
                                                 <option value="L">L</option>
                                                 <option value="M">M</option>
