@@ -102,58 +102,57 @@ function validateFileSize(file) {
     }
 }
 
-function mainOptionsFactory(width, height, data, margin, image) {
-    qrOptions.options.width = width
-    qrOptions.options.height = height
-    qrOptions.options.data = data
-    qrOptions.options.margin = margin
-    qrOptions.options.image = image
-}
+// function mainOptionsFactory(width, height, data, margin, image) {
+//     qrOptions.options.width = width
+//     qrOptions.options.height = height
+//     qrOptions.options.data = data
+//     qrOptions.options.margin = margin
+//     qrOptions.options.image = image
+// }
 
-function dotsOptionsFactory(dotType, dotColor) {
-    qrOptions.options.dotsOptions = {
-        color: dotColor,
-        type: dotType
-    }
-}
+// function dotsOptionsFactory(dotType, dotColor) {
+//     qrOptions.options.dotsOptions = {
+//         color: dotColor,
+//         type: dotType
+//     }
+// }
 
-function cornerSquareOptionsFactory(cornerSquareType, cornerSquareColor) {
-    qrOptions.options.cornersSquareOptions = {
-        color: cornerSquareColor,
-        type: cornerSquareType
-    }
-}
+// function cornerSquareOptionsFactory(cornerSquareType, cornerSquareColor) {
+//     qrOptions.options.cornersSquareOptions = {
+//         color: cornerSquareColor,
+//         type: cornerSquareType
+//     }
+// }
 
-function cornerDotsOptionsFactory(style, color) {
-    qrOptions.options.cornersDotOptions = {
-        type: style,
-        color: color
-    }
-}
+// function cornerDotsOptionsFactory(style, color) {
+//     qrOptions.options.cornersDotOptions = {
+//         type: style,
+//         color: color
+//     }
+// }
 
 // function backgroundOptionsFactory() {}
 
-function imageOptionsFactory(hideDots, imgSize, imgMargin) {
-    qrOptions.options.imageOptions = {
-        hideBackgroundDots: hideDots,
-        imageSize: imgSize,
-        margin: imgMargin
-    }
-}
+// function imageOptionsFactory(hideDots, imgSize, imgMargin) {
+//     qrOptions.options.imageOptions = {
+//         hideBackgroundDots: hideDots,
+//         imageSize: imgSize,
+//         margin: imgMargin
+//     }
+// }
 
-function advQROptionsFactory(type, mode, correction) {
-    qrOptions.options.qrOptions = {
-        "typeNumber": type,
-        "mode": mode,
-        "errorCorrectionLevel": correction
-    }
-}
+// function advQROptionsFactory(type, mode, correction) {
+//     qrOptions.options.qrOptions = {
+//         "typeNumber": type,
+//         "mode": mode,
+//         "errorCorrectionLevel": correction
+//     }
+// }
 
 function qrOptionsFactory(id) {
     return new Promise((resolve, reject) => {
         let element = document.getElementById(id)
         if (Object.keys(qrOptions.options).includes(element.id)) {
-            // TODO: check how to handle radios here
             if (element.id === "image") {
                 let file = document.getElementById(id).files[0]
                 if (validateFileSize(file)) {
@@ -170,7 +169,36 @@ function qrOptionsFactory(id) {
                     element.value = null
                 }
             } else if (element.tagName === "select") {
-                qrOptions[id] = element.value
+                if (element.id === "dots-style") {
+                    qrOptions.options.dotsOptions.type = element.value
+                } else if (element.id === "corner-square-style") {
+                    qrOptions.options.cornersSquareOptions.type = element.value
+                } else if (element.id === "corner-dots-style") {
+                    qrOptions.options.cornersDotOptions.type = element.value
+                } else if (element.id === "mode") {
+                    qrOptions.options.qrOptions.mode = element.value
+                } else if (element.id === "correction-level") {
+                    qrOptions.options.qrOptions.errorCorrectionLevel = element.value
+                }
+                resolve(JSON.stringify(qrOptions))
+            } else if (element.tagName === "input") {
+                if (element.id === "data") {
+                    qrOptions.options.data = element.value
+                } else if (element.id === "height") {
+                    qrOptions.options.height = element.value
+                } else if (element.id === "width") {
+                    qrOptions.options.width = element.value
+                } else if (element.id === "margin") {
+                    qrOptions.options.margin = element.value
+                } else if (element.id === "image-size") {
+                    qrOptions.options.imageOptions.imageSize = element.value
+                } else if (element.id === "image-margin") {
+                    qrOptions.options.imageOptions.margin = element.value
+                } else if (element.id === "qr-type") {
+                    qrOptions.options.qrOptions.typeNumber = element.value
+                } else if (element.id === "hide-background") {
+                    qrOptions.options.imageOptions.hideBackgroundDots = element.checked
+                }
                 resolve(JSON.stringify(qrOptions))
             }
         }
