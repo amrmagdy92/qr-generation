@@ -5,6 +5,8 @@ if (isDarkMode()) {
     document.querySelector("html").setAttribute("data-bs-theme", window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light")
 }
 
+// TODO: remove gradient color support for now
+
 let qrOptions = {
     options: {
         "width": 300,
@@ -100,20 +102,52 @@ function validateFileSize(file) {
     }
 }
 
-// TODO: Implement the below factories
-function mainOptionsFactory() {}
+function mainOptionsFactory(width, height, data, margin, image) {
+    qrOptions.options.width = width
+    qrOptions.options.height = height
+    qrOptions.options.data = data
+    qrOptions.options.margin = margin
+    qrOptions.options.image = image
+}
 
-function dotsOptionsFactory() {}
+function dotsOptionsFactory(dotType, dotColor) {
+    qrOptions.options.dotsOptions = {
+        color: dotColor,
+        type: dotType
+    }
+}
 
-function cornerSquareOptionsFactory() {}
+function cornerSquareOptionsFactory(cornerSquareType, cornerSquareColor) {
+    qrOptions.options.cornersSquareOptions = {
+        color: cornerSquareColor,
+        type: cornerSquareType
+    }
+}
 
-function cornerDotsOptionsFactory() {}
+function cornerDotsOptionsFactory(style, color) {
+    qrOptions.options.cornersDotOptions = {
+        type: style,
+        color: color
+    }
+}
 
-function backgroundOptionsFactory() {}
+// function backgroundOptionsFactory() {}
 
-function imageOptionsFactory() {}
+function imageOptionsFactory(hideDots, imgSize, imgMargin) {
+    qrOptions.options.imageOptions = {
+        hideBackgroundDots: hideDots,
+        imageSize: imgSize,
+        margin: imgMargin
+    }
+}
 
-function advQROptionsFactory() {}
+function advQROptionsFactory(type, mode, correction) {
+    qrOptions.options.qrOptions = {
+        "typeNumber": type,
+        "mode": mode,
+        "errorCorrectionLevel": correction
+    }
+}
 
 function qrOptionsFactory(id) {
     return new Promise((resolve, reject) => {
