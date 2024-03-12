@@ -6,6 +6,9 @@ if (isDarkMode()) {
 }
 
 // TODO: remove gradient color support for now
+// TODO: check how to implement idleState
+// TODO: check how to send only updates instead of the whole object
+// TODO: remove the qrOptions variable as it's no longer needed
 
 let qrOptions = {
     options: {
