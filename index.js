@@ -109,7 +109,7 @@ function qrOptionsFactory(id) {
                 if (validateFileSize(file)) {
                     imgBase64(file)
                     .then( result => {
-                        qrOptions["options"]["image"] = result
+                        qrOptions["image"] = result
                         resolve(JSON.stringify(qrOptions))
                     })
                     .catch( error => {
