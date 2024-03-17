@@ -181,7 +181,7 @@ function fetchQR(id) {
         .then( result => {
             const request = new XMLHttpRequest()
             request.withCredentials = true
-            request.open('POST', "http://127.0.0.1:5000/api/v1/qr")
+            request.open('POST', "ec2-3-70-224-6.eu-central-1.compute.amazonaws.com/api/v1/qr")
             request.setRequestHeader('Content-Type', 'application/json')
             request.addEventListener('load', function(event) {
                 if (request.status === 200 && request.readyState === 4) {
@@ -213,7 +213,7 @@ function removeSession(event) {
     event.returnValue = true
     const request = new XMLHttpRequest()
     request.withCredentials = true
-    request.open('DELETE', "http://127.0.0.1:5000/api/v1/qr")
+    request.open('DELETE', "ec2-3-70-224-6.eu-central-1.compute.amazonaws.com/api/v1/qr")
     request.setRequestHeader('Content-Type', 'application/json')
     request.addEventListener('load', function(event) {
         if (request.status === 200 && request.readyState === 4) {
