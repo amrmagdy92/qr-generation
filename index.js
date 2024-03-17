@@ -176,7 +176,8 @@ document.getElementById("qr-type").addEventListener("change", fetchQR("qr-type")
 document.getElementById("hide-background").addEventListener("change", fetchQR("hide-background"))
 
 function fetchQR(id) {
-    qrOptionsFactory(id)
+    if (document.readyState == "complete") {
+        qrOptionsFactory(id)
         .then( result => {
             const request = new XMLHttpRequest()
             request.open('POST', "http://127.0.0.1:5000/api/v1/qr")
@@ -186,11 +187,15 @@ function fetchQR(id) {
                     let base64Response = JSON.parse(request.response).msg
                     $("#generated-qr").attr("src", `data:image/png;base64, ${base64Response}`)
                 } else {
-                    // TODO: error handling
+                    if (request.status == 400 && request.readyState === 4) {
+                        console.log(request.response)
+                        // TODO: Add proper error handling
+                    }
                 }
             })
             request.send(result)
         })
+    }
 }
 
 function imgBase64(file) {
