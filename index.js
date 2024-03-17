@@ -180,6 +180,7 @@ function fetchQR(id) {
         qrOptionsFactory(id)
         .then( result => {
             const request = new XMLHttpRequest()
+            request.withCredentials = true
             request.open('POST', "http://127.0.0.1:5000/api/v1/qr")
             request.setRequestHeader('Content-Type', 'application/json')
             request.addEventListener('load', function(event) {
@@ -206,3 +207,27 @@ function imgBase64(file) {
         reader.addEventListener("error", () => { reject(reader.error) })
     })
 }
+
+function removeSession(event) {
+    event.preventDefault()
+    event.returnValue = true
+    const request = new XMLHttpRequest()
+    request.withCredentials = true
+    request.open('DELETE', "http://127.0.0.1:5000/api/v1/qr")
+    request.setRequestHeader('Content-Type', 'application/json')
+    request.addEventListener('load', function(event) {
+        if (request.status === 200 && request.readyState === 4) {
+            console.log(request.response)
+        } else {
+            if (request.status == 400 && request.readyState === 4) {
+                console.log(request.response)
+                // TODO: Add proper error handling
+            }
+        }
+    })
+    request.send()
+}
+
+window.addEventListener("beforeunload", (event) => {
+    removeSession(event)
+})
