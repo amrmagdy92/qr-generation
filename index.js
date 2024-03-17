@@ -5,6 +5,8 @@ if (isDarkMode()) {
     document.querySelector("html").setAttribute("data-bs-theme", window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light")
 }
 
+// TODO: implement download functionality
+
 let qrOptions = {
     "width": 300,
     "height": 300,
