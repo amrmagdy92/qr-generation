@@ -181,7 +181,7 @@ function fetchQR(id) {
         .then( result => {
             const request = new XMLHttpRequest()
             request.withCredentials = true
-            request.open('POST', "https://qr-generator-sqpd.onrender.com//api/v1/qr")
+            request.open('POST', "https://qr-generator-sqpd.onrender.com/api/v1/qr")
             request.setRequestHeader('Content-Type', 'application/json')
             request.addEventListener('load', function(event) {
                 if (request.status === 200 && request.readyState === 4) {
