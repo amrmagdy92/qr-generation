@@ -26,19 +26,19 @@
                                 </div>
                                 <div class="col-lg-3">Image file:</div>
                                 <div class="col-lg-9">
-                                    <input class="btn" style="width: 100%;" type="file" id="image">
+                                    <input class="btn" style="width: 100%;" type="file" id="image" onchange="fetchQR(this.id)">
                                 </div>
                                 <div class="col-lg-3">Height:</div>
                                 <div class="col-lg-9">
-                                    <input style="width: 100%;" type="text" value="300" id="height">
+                                    <input style="width: 100%;" type="text" value="300" id="height" onchange="fetchQR(this.id)">
                                 </div>
                                 <div class="col-lg-3">Width:</div>
                                 <div class="col-lg-9">
-                                    <input style="width: 100%;" type="text" value="300" id="width">
+                                    <input style="width: 100%;" type="text" value="300" id="width" onchange="fetchQR(this.id)">
                                 </div>
                                 <div class="col-lg-3">Margin:</div>
                                 <div class="col-lg-9">
-                                    <input style="width: 100%;" type="text" value="0" id="margin">
+                                    <input style="width: 100%;" type="text" value="0" id="margin" onchange="fetchQR(this.id)">
                                 </div>
                             </div>
                         </div>
@@ -55,7 +55,7 @@
                                 <div class="col-lg-9">
                                     <div class="d-flex flex-column justify-content-center dropdown">
                                         <div class="dropdown">
-                                            <select name="dots-style" class="btn btn-secondary dropdown-toggle"  id="dots-style">
+                                            <select name="dots-style" class="btn btn-secondary dropdown-toggle"  id="dots-style" onchange="fetchQR(this.id)">
                                                 <option>Select dots style</option>
                                                 <option value="square">Square</option>
                                                 <option value="dots">Dots</option>
@@ -81,7 +81,7 @@
                                 </div> -->
                                 <div class="col-lg-3">Dots Color:</div>
                                 <div class="col-lg-9">
-                                    <input type="color" id="dots-color" value="#0077B7">
+                                    <input type="color" id="dots-color" value="#0077B7" onchange="fetchQR(this.id)">
                                 </div>
                             </div>
                         </div>
@@ -98,7 +98,7 @@
                                 <div class="col-lg-9">
                                     <div class="d-flex flex-column justify-content-center dropdown">
                                         <div class="dropdown">
-                                            <select name="corner-square-style" class="btn btn-secondary dropdown-toggle" id="corner-square-style">
+                                            <select name="corner-square-style" class="btn btn-secondary dropdown-toggle" id="corner-square-style" onchange="fetchQR(this.id)">
                                                 <option>Select dots style</option>
                                                 <option value="square">Square</option>
                                                 <option value="dots">Dots</option>
@@ -121,7 +121,7 @@
                                 </div> -->
                                 <div class="col-lg-3">Corner Square Color:</div>
                                 <div class="col-lg-9">
-                                    <input type="color" value="#0077B7">
+                                    <input type="color" value="#0077B7" onchange="fetchQR(this.id)">
                                 </div>
                             </div>
                         </div>
@@ -138,7 +138,7 @@
                                 <div class="col-lg-9">
                                     <div class="d-flex flex-column justify-content-center dropdown">
                                         <div class="dropdown">
-                                            <select name="corner-dots-style" id="corner-dots-style" class="btn btn-secondary dropdown-toggle">
+                                            <select name="corner-dots-style" id="corner-dots-style" class="btn btn-secondary dropdown-toggle" onchange="fetchQR(this.id)">
                                                 <option>Select dots style</option>
                                                 <option value="none">None</option>
                                                 <option value="square">Square</option>
@@ -161,7 +161,7 @@
                                 </div> -->
                                 <div class="col-lg-3">Corner Dots Color:</div>
                                 <div class="col-lg-9">
-                                    <input type="color" value="#0077B7">
+                                    <input type="color" value="#0077B7" onchange="fetchQR(this.id)">
                                 </div>
                             </div>
                         </div>
@@ -204,20 +204,20 @@
                                 <div class="col-lg-3">Hide background dots:</div>
                                 <!--TODO: check how to handle this checkbox when structuring the qrOptions object-->
                                 <div class="col-lg-9 form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="hide-background" checked>
+                                    <input class="form-check-input" type="checkbox" value="" id="hide-background" checked  onchange="fetchQR(this.id)">
                                 </div>
                                 <div class="col-lg-3">Image size:</div>
                                 <div class="col-lg-9">
-                                    <input style="width: 100%;" type="text" id="image-size" value="300">
+                                    <input style="width: 100%;" type="text" id="image-size" value="300" onchange="fetchQR(this.id)">
                                 </div>
                                 <div class="col-lg-3">Margin:</div>
                                 <div class="col-lg-9">
-                                    <input style="width: 100%;" type="text" id="image-margin" value="300">
+                                    <input style="width: 100%;" type="text" id="image-margin" value="300" onchange="fetchQR(this.id)">
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="accordion-item">
+                    <!-- <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseThree">
                                 QR options (advanced - better leave it as is)
@@ -227,13 +227,13 @@
                             <div class="accordion-body row g-3">
                                 <div class="col-lg-3">Type number:</div>
                                 <div class="col-lg-9">
-                                    <input style="width: 100%;" type="text" id="qr-type" value="0">
+                                    <input style="width: 100%;" type="text" id="qr-type" value="0" onchange="fetchQR(this.id)">
                                 </div>
                                 <div class="col-lg-3">Mode:</div>
                                 <div class="col-lg-9">
                                     <div class="d-flex flex-column justify-content-center dropdown">
                                         <div class="dropdown">
-                                            <select name="mode" id="mode" class="btn btn-secondary dropdown-toggle">
+                                            <select name="mode" id="mode" class="btn btn-secondary dropdown-toggle" onchange="fetchQR(this.id)">
                                                 <option>Select mode</option>
                                                 <option value="Numeric">Numeric</option>
                                                 <option value="Alphanumeric">Alphanumeric</option>
@@ -247,7 +247,7 @@
                                 <div class="col-lg-9">
                                     <div class="d-flex flex-column justify-content-center dropdown">
                                         <div class="dropdown">
-                                            <select name="correction-level" id="correction-level" class="btn btn-secondary dropdown-toggle">
+                                            <select name="correction-level" id="correction-level" class="btn btn-secondary dropdown-toggle" onchange="fetchQR(this.id)">
                                                 <option>Select correction level</option>
                                                 <option value="L">L</option>
                                                 <option value="M">M</option>
@@ -259,7 +259,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="d-flex flex-column col-lg-3">
                     <img src="./assets/amaa_linkedin.png" alt="" id="generated-qr" style="height: 300px; width: 300px; margin: auto;">
