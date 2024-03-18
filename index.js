@@ -161,20 +161,6 @@ function qrOptionsFactory(id) {
     })
 }
 
-document.getElementById("data").addEventListener("change", fetchQR("data"))
-document.getElementById("dots-style").addEventListener("change", fetchQR("dots-style"))
-document.getElementById("corner-square-style").addEventListener("change", fetchQR("corner-square-style"))
-document.getElementById("corner-dots-style").addEventListener("change", fetchQR("corner-dots-style"))
-document.getElementById("mode").addEventListener("change", fetchQR("mode"))
-document.getElementById("correction-level").addEventListener("change", fetchQR("correction-level"))
-document.getElementById("height").addEventListener("change", fetchQR("height"))
-document.getElementById("width").addEventListener("change", fetchQR("width"))
-document.getElementById("margin").addEventListener("change", fetchQR("margin"))
-document.getElementById("image-size").addEventListener("change", fetchQR("image-size"))
-document.getElementById("image-margin").addEventListener("change", fetchQR("image-margin"))
-document.getElementById("qr-type").addEventListener("change", fetchQR("qr-type"))
-document.getElementById("hide-background").addEventListener("change", fetchQR("hide-background"))
-
 function fetchQR(id) {
     if (document.readyState == "complete") {
         qrOptionsFactory(id)
