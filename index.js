@@ -101,62 +101,69 @@ function validateFileSize(file) {
 function qrOptionsFactory(id) {
     return new Promise((resolve, reject) => {
         let element = document.getElementById(id)
-        if (Object.keys(qrOptions).includes(element.id)) {
-            if (element.id === "image") {
-                let file = document.getElementById(id).files[0]
-                if (validateFileSize(file)) {
-                    imgBase64(file)
-                    .then( result => {
-                        qrOptions["image"] = result
-                        resolve(JSON.stringify(qrOptions))
-                    })
-                    .catch( error => {
-                        reject(error)
-                    })
-                } else {
-                    alert("Image file should be less than or equal to 100 KB")
-                    element.value = null
-                }
-            } else if (element.id === "dots-style") {
-                qrOptions.dotsOptions.type = element.value
-                resolve(JSON.stringify(qrOptions))
-            } else if (element.id === "corner-square-style") {
-                qrOptions.cornersSquareOptions.type = element.value
-                resolve(JSON.stringify(qrOptions))
-            } else if (element.id === "corner-dots-style") {
-                qrOptions.cornersDotOptions.type = element.value
-                resolve(JSON.stringify(qrOptions))
-            } else if (element.id === "mode") {
-                qrOptions.qrOptions.mode = element.value
-                resolve(JSON.stringify(qrOptions))
-            } else if (element.id === "correction-level") {
-                qrOptions.qrOptions.errorCorrectionLevel = element.value
-                resolve(JSON.stringify(qrOptions))
-            } else if (element.id === "data") {
-                qrOptions.data = element.value
-                resolve(JSON.stringify(qrOptions))
-            } else if (element.id === "height") {
-                qrOptions.height = element.value
-                resolve(JSON.stringify(qrOptions))
-            } else if (element.id === "width") {
-                qrOptions.width = element.value
-                resolve(JSON.stringify(qrOptions))
-            } else if (element.id === "margin") {
-                qrOptions.margin = element.value
-                resolve(JSON.stringify(qrOptions))
-            } else if (element.id === "image-size") {
-                qrOptions.imageOptions.imageSize = element.value
-                resolve(JSON.stringify(qrOptions))
-            } else if (element.id === "image-margin") {
-                qrOptions.imageOptions.margin = element.value
-                resolve(JSON.stringify(qrOptions))
-            } else if (element.id === "qr-type") {
-                qrOptions.qrOptions.typeNumber = element.value
-                resolve(JSON.stringify(qrOptions))
-            } else if (element.id === "hide-background") {
-                qrOptions.imageOptions.hideBackgroundDots = element.checked
-                resolve(JSON.stringify(qrOptions))
+        if (element.id === "image") {
+            let file = document.getElementById(id).files[0]
+            if (validateFileSize(file)) {
+                imgBase64(file)
+                .then( result => {
+                    qrOptions["image"] = result
+                    resolve(JSON.stringify(qrOptions))
+                })
+                .catch( error => {
+                    reject(error)
+                })
+            } else {
+                alert("Image file should be less than or equal to 100 KB")
+                element.value = null
             }
+        } else if (element.id === "dots-style") {
+            qrOptions.dotsOptions.type = element.value
+            resolve(JSON.stringify(qrOptions))
+        } else if (element.id === "corner-square-style") {
+            qrOptions.cornersSquareOptions.type = element.value
+            resolve(JSON.stringify(qrOptions))
+        } else if (element.id === "corner-dots-style") {
+            qrOptions.cornersDotOptions.type = element.value
+            resolve(JSON.stringify(qrOptions))
+        } else if (element.id === "mode") {
+            qrOptions.qrOptions.mode = element.value
+            resolve(JSON.stringify(qrOptions))
+        } else if (element.id === "correction-level") {
+            qrOptions.qrOptions.errorCorrectionLevel = element.value
+            resolve(JSON.stringify(qrOptions))
+        } else if (element.id === "data") {
+            qrOptions.data = element.value
+            resolve(JSON.stringify(qrOptions))
+        } else if (element.id === "height") {
+            qrOptions.height = element.value
+            resolve(JSON.stringify(qrOptions))
+        } else if (element.id === "width") {
+            qrOptions.width = element.value
+            resolve(JSON.stringify(qrOptions))
+        } else if (element.id === "margin") {
+            qrOptions.margin = element.value
+            resolve(JSON.stringify(qrOptions))
+        } else if (element.id === "image-size") {
+            qrOptions.imageOptions.imageSize = element.value
+            resolve(JSON.stringify(qrOptions))
+        } else if (element.id === "image-margin") {
+            qrOptions.imageOptions.margin = element.value
+            resolve(JSON.stringify(qrOptions))
+        } else if (element.id === "qr-type") {
+            qrOptions.qrOptions.typeNumber = element.value
+            resolve(JSON.stringify(qrOptions))
+        } else if (element.id === "hide-background") {
+            qrOptions.imageOptions.hideBackgroundDots = element.checked
+            resolve(JSON.stringify(qrOptions))
+        } else if (element.id === "dots-color") {
+            qrOptions.dotsOptions.color = element.value
+            resolve(JSON.stringify(qrOptions))
+        } else if (element.id === "corner-square-color") {
+            qrOptions.cornersSquareOptions.color = element.value
+            resolve(JSON.stringify(qrOptions))
+        } else if (element.id === "corner-dots-color") {
+            qrOptions.cornersDotOptions.color = element.value
+            resolve(JSON.stringify(qrOptions))
         }
     })
 }
@@ -199,7 +206,7 @@ function removeSession(event) {
     event.returnValue = true
     const request = new XMLHttpRequest()
     request.withCredentials = true
-    request.open('DELETE', "https://qr-generator-sqpd.onrender.com//api/v1/qr")
+    request.open('DELETE', "https://qr-generator-sqpd.onrender.com/api/v1/qr")
     request.setRequestHeader('Content-Type', 'application/json')
     request.addEventListener('load', function(event) {
         if (request.status === 200 && request.readyState === 4) {
