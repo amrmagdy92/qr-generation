@@ -5,6 +5,8 @@ if (isDarkMode()) {
     document.querySelector("html").setAttribute("data-bs-theme", window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light")
 }
 
+localStorage.setItem('device_uuid', crypto.randomUUID())
+
 let qrOptions = {
     "width": 300,
     "height": 300,
@@ -176,8 +178,8 @@ function fetchQR(id) {
         loadingSpinner.classList.remove("visually-hidden")
         qrOptionsFactory(id)
         .then( result => {
+            const body = JSON.stringify({device: localStorage.getItem('device_uuid'), data: result})
             const request = new XMLHttpRequest()
-            request.withCredentials = true
             request.open('POST', "https://qr-generator-sqpd.onrender.com/api/v1/qr")
             request.setRequestHeader('Content-Type', 'application/json')
             request.addEventListener('load', function(event) {
@@ -193,7 +195,7 @@ function fetchQR(id) {
                     }
                 }
             })
-            request.send(result)
+            request.send(body)
         })
     }
 }
@@ -211,7 +213,7 @@ function removeSession(event) {
     event.preventDefault()
     event.returnValue = true
     const request = new XMLHttpRequest()
-    request.withCredentials = true
+    const body = JSON.stringify({device: localStorage.getItem('device_uuid')})
     request.open('DELETE', "https://qr-generator-sqpd.onrender.com/api/v1/qr")
     request.setRequestHeader('Content-Type', 'application/json')
     request.addEventListener('load', function(event) {
@@ -224,7 +226,8 @@ function removeSession(event) {
             }
         }
     })
-    request.send()
+    request.send(body)
+    localStorage.clear()
 }
 
 window.addEventListener("beforeunload", (event) => {
