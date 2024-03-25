@@ -170,6 +170,10 @@ function qrOptionsFactory(id) {
 
 function fetchQR(id) {
     if (document.readyState == "complete") {
+        let spinnerDiv = document.getElementById("spinner-div")
+        let loadingSpinner = document.getElementById("loading-spinner")
+        spinnerDiv.classList.remove("visually-hidden")
+        loadingSpinner.classList.remove("visually-hidden")
         qrOptionsFactory(id)
         .then( result => {
             const request = new XMLHttpRequest()
@@ -178,6 +182,8 @@ function fetchQR(id) {
             request.setRequestHeader('Content-Type', 'application/json')
             request.addEventListener('load', function(event) {
                 if (request.status === 200 && request.readyState === 4) {
+                    spinnerDiv.classList.add("visually-hidden")
+                    loadingSpinner.classList.add("visually-hidden")
                     let base64Response = JSON.parse(request.response).msg
                     $("#generated-qr").attr("src", `data:image/png;base64, ${base64Response}`)
                 } else {
